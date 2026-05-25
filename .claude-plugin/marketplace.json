@@ -1,11 +1,11 @@
 {
-  "name": "teleios",
+  "name": "resurvey-dev",
   "owner": {
     "name": "Teleios",
     "url": "https://teleios.au"
   },
   "metadata": {
-    "description": "Skills published by Teleios."
+    "description": "Resurvey skills, published by Teleios."
   },
   "plugins": [
     {

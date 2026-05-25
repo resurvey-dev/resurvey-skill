@@ -6,7 +6,7 @@ Build interactive surveys through conversation with Claude Code. The skill drive
 
 ```
 /plugin marketplace add resurvey-dev/resurvey-skill
-/plugin install resurvey@teleios
+/plugin install resurvey@resurvey-dev
 ```
 
 Then:
