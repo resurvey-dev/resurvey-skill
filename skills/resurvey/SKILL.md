@@ -44,7 +44,7 @@ npx --prefix ../.resurvey-cli resurvey init --template <id> --dir ./<slug>
 
 ## Step 2 — Understand the page so you can author for it
 
-The respondent sees a single React SPA served from `resurvey.teleios.au/d/<distId>` (with a brief landing for password/token distributions). Each question is rendered by a block from `@resurvey/survey-runtime`: `<SingleChoice>`, `<MultiChoice>`, `<Likert>`, `<NPS>`, `<FreeText>`, plus layout helpers (`<Layout>`, `<Card>`, `<Progress>`, `<Button>`). The skill composes these — it doesn't roll its own form controls.
+The respondent sees a single React SPA served from `resurvey.teleios.au/d/<distId>` (with a brief landing for password/token distributions). Each question is rendered by a block from `@resurvey/survey-runtime`: `<SingleChoice>`, `<MultiChoice>`, `<Likert>`, `<MatrixLikert>`, `<NPS>`, `<FreeText>`, `<CBCChoice>`, plus layout helpers (`<Layout>`, `<Card>`, `<Progress>`, `<Button>`). The skill composes these — it doesn't roll its own form controls.
 
 Every interaction emits an event (`trackStart`, `trackAnswer`, `trackComplete`); the event stream is the data the author later analyses. **The runtime tracks answer revisions automatically** — if the respondent changes their answer to Q3 from "No" to "Yes", both are in the event log with `revision: 1` and `revision: 2`. Author code shouldn't reimplement this.
 
@@ -181,6 +181,8 @@ Use the blocks from `@resurvey/survey-runtime` for every standard question type.
 | `<Likert anchors={["...", "..."]} points={5} />` | Agreement / frequency / quality scales, with anchored endpoints |
 | `<NPS />` | The exact 0–10 recommend question with the standard labels |
 | `<FreeText placeholder="..." maxLength={N} />` | Open-ended; default `maxLength: 500` so respondents don't write essays |
+| `<MatrixLikert statements={[...]} labels={{min, max}} />` | A shared scale across several short statements ("5 statements about on-call") — one screen, one set of anchors |
+| `<CBCChoice task attributes value onChange />` + `generateCBCDesigns({ attributes, numTasks, seed })` | Conjoint / pricing-CBC choice tasks. Generate the design once from `ctx.sessionId`, render one task per screen, store the chosen `alternativeIndex` per task |
 | `<Layout>` `<Card>` `<Progress>` `<Button>` | Composition — wrap a question in a card, render the progress bar, primary action |
 
 **Submit pattern.** Every block fires `trackAnswer({ questionId, value })` on change. The runtime handles revisions, batching, retries, beacon-on-unload. **Don't** wire your own `fetch` to the events endpoint — you'll skip the queue, lose offline submissions, and break dedup.
