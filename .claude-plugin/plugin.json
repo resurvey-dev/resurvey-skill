@@ -1,0 +1,13 @@
+{
+  "name": "resurvey",
+  "version": "0.1.0",
+  "description": "Build interactive surveys through conversation with Claude Code. Generates a Resurvey project (React + Vite, runtime-block composition, public/password/token/panel distribution, real-time event ingest) from a question the user actually needs answered.",
+  "author": {
+    "name": "Teleios",
+    "url": "https://teleios.au"
+  },
+  "homepage": "https://github.com/resurvey-dev/resurvey-skill",
+  "repository": "https://github.com/resurvey-dev/resurvey-skill",
+  "license": "MIT",
+  "keywords": ["survey", "research", "nps", "cbc", "user-research", "resurvey", "teleios"]
+}

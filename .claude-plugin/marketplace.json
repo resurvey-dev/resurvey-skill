@@ -1,0 +1,17 @@
+{
+  "name": "teleios",
+  "owner": {
+    "name": "Teleios",
+    "url": "https://teleios.au"
+  },
+  "metadata": {
+    "description": "Skills published by Teleios."
+  },
+  "plugins": [
+    {
+      "name": "resurvey",
+      "source": "./",
+      "description": "Build interactive surveys through conversation with Claude Code (Resurvey). Public/password/token/panel distribution, real-time response stream, dashboard at resurvey.teleios.au."
+    }
+  ]
+}
